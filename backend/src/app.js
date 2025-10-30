@@ -6,7 +6,9 @@ import { NoteModel } from "./models/Note.js";
 import { createNotesRouter } from "./routes/notes.js";
 
 const app = express();
+
 app.use(cors());
+
 app.use(bodyParser.json());
 
 const startServer = async () => {

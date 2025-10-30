@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    container_name: stock-notes-backend
+    ports:
+      - "5001:5000"
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      # keep node_modules inside the image so host dir doesn't override it
+      - node_modules:/app/node_modules
+
+volumes:
+  node_modules:

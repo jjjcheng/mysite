@@ -9,14 +9,22 @@ export function createNotesRouter(noteModel) {
   });
 
   router.post("/", async (req, res) => {
-    const { title, content } = req.body;
+    const { title, content } = req.body || {};
+    if (!title || !content) {
+      return res.status(400).json({ error: "title and content are required" });
+    }
+
     await noteModel.create(title, content);
     res.json({ message: "Note created" });
   });
 
   router.put("/:id", async (req, res) => {
     const { id } = req.params;
-    const { title, content } = req.body;
+    const { title, content } = req.body || {};
+    if (!title || !content) {
+      return res.status(400).json({ error: "title and content are required" });
+    }
+
     await noteModel.update(id, title, content);
     res.json({ message: "Note updated" });
   });

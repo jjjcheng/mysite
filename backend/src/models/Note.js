@@ -7,6 +7,10 @@ export class NoteModel {
     return this.db.all("SELECT * FROM notes ORDER BY id DESC");
   }
 
+  async getById(id) {
+    return this.db.get("SELECT * FROM notes WHERE id=?", [id]);
+  }
+
   async create(title, content) {
     await this.db.run("INSERT INTO notes (title, content) VALUES (?, ?)", [
       title,

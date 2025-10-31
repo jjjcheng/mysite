@@ -8,6 +8,13 @@ export function createNotesRouter(noteModel) {
     res.json(notes);
   });
 
+  router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    const note = await noteModel.getById(id);
+    if (!note) return res.status(404).json({ error: "Not found" });
+    res.json(note);
+  });
+
   router.post("/", async (req, res) => {
     const { title, content } = req.body || {};
     if (!title || !content) {

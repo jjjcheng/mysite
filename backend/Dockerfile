@@ -1,5 +1,5 @@
-# 使用完整的 Debian 版 node18，支持 sqlite3 编译
-FROM node:18-bullseye
+# 使用完整的 Debian 版 node20，支持 sqlite3 编译
+FROM node:20-bullseye
 
 WORKDIR /app
 

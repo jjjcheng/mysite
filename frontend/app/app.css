@@ -13,3 +13,11 @@ body {
     color-scheme: dark;
   }
 }
+
+/* 调整 Quill 编辑器高度，避免按钮与编辑器重叠 */
+.ql-snow .ql-container {
+  min-height: 320px;
+}
+.ql-snow .ql-editor {
+  min-height: 260px;
+}

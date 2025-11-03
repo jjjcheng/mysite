@@ -26,17 +26,59 @@ export default function NotesListPage() {
 
   return (
     <div style={{ padding: 16, maxWidth: 960, margin: "0 auto" }}>
-      <h1 style={{ fontSize: 20, fontWeight: 600, marginBottom: 12 }}>笔记列表</h1>
+      <h1 style={{ fontSize: 20, fontWeight: 600, marginBottom: 12 }}>
+        笔记列表
+      </h1>
       {loading ? <p>加载中...</p> : null}
       {error ? <p style={{ color: "#c00" }}>{error}</p> : null}
       {!loading && !error ? (
-        <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #eee", borderRadius: 8, overflow: "hidden" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            border: "1px solid #eee",
+            borderRadius: 8,
+            overflow: "hidden",
+          }}
+        >
           <thead>
             <tr>
-              <th style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: 8 }}>时间</th>
-              <th style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: 8 }}>ID</th>
-              <th style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: 8 }}>Title</th>
-              <th style={{ textAlign: "left", borderBottom: "1px solid #eee", padding: 8 }}>操作</th>
+              <th
+                style={{
+                  textAlign: "left",
+                  borderBottom: "1px solid #eee",
+                  padding: 8,
+                }}
+              >
+                时间
+              </th>
+              <th
+                style={{
+                  textAlign: "left",
+                  borderBottom: "1px solid #eee",
+                  padding: 8,
+                }}
+              >
+                ID
+              </th>
+              <th
+                style={{
+                  textAlign: "left",
+                  borderBottom: "1px solid #eee",
+                  padding: 8,
+                }}
+              >
+                Title
+              </th>
+              <th
+                style={{
+                  textAlign: "left",
+                  borderBottom: "1px solid #eee",
+                  padding: 8,
+                }}
+              >
+                操作
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -45,9 +87,22 @@ export default function NotesListPage() {
                 <td style={{ padding: 8, borderBottom: "1px solid #f3f3f3" }}>
                   {new Date(n.created_at).toLocaleString()}
                 </td>
-                <td style={{ padding: 8, borderBottom: "1px solid #f3f3f3" }}>{n.id}</td>
-                <td style={{ padding: 8, borderBottom: "1px solid #f3f3f3" }}>{n.title}</td>
-                <td style={{ padding: 8, borderBottom: "1px solid #f3f3f3", display: "flex", gap: 8 }}>
+                <td style={{ padding: 8, borderBottom: "1px solid #f3f3f3" }}>
+                  {n.id}
+                </td>
+                <td
+                  style={{ padding: 8, borderBottom: "1px solid #f3f3f3" }}
+                  dangerouslySetInnerHTML={{ __html: n.title }}
+                />
+
+                <td
+                  style={{
+                    padding: 8,
+                    borderBottom: "1px solid #f3f3f3",
+                    display: "flex",
+                    gap: 8,
+                  }}
+                >
                   <Link
                     to={`/note/${n.id}`}
                     style={{
@@ -86,5 +141,3 @@ export default function NotesListPage() {
     </div>
   );
 }
-
-

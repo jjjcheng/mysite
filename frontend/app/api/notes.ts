@@ -1,12 +1,12 @@
 import httpClient from "../lib/http";
 
 export type CreateNotePayload = {
+  title: string;
   content: string;
 };
 
 export async function createNote(payload: CreateNotePayload): Promise<void> {
-  const { content } = payload;
-  const title = content.trim().slice(0, 20) || "Untitled";
+  const { title, content } = payload;
   await httpClient.post("/api/notes", { title, content });
 }
 

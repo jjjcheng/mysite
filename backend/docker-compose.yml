@@ -6,9 +6,12 @@ services:
     container_name: stock-notes-backend
     ports:
       - "5001:5000"
+    environment:
+      - PUBLIC_BASE_URL=http://localhost:5001
     volumes:
       - .:/app
       - ./data:/app/data
+      - ./uploads:/app/uploads
       # keep node_modules inside the image so host dir doesn't override it
       - node_modules:/app/node_modules
 
